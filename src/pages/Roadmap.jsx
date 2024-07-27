@@ -8,6 +8,7 @@ import ReactFlow, {
   BaseEdge,
   EdgeLabelRenderer,
   getSmoothStepPath,
+  MarkerType,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
@@ -93,8 +94,6 @@ const edgeOptions = {
   markerEnd: {
     type: MarkerType.ArrowClosed,
     color: '#ffffff',
-    width: 20,
-    height: 20,
   },
 };
 
