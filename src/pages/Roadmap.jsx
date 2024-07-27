@@ -29,6 +29,10 @@ const edgeTypes = {
   custom: CustomEdge,
 };
 
+const nodeTypes = {
+  custom: CustomNode,
+};
+
 const CustomEdge = ({ id, sourceX, sourceY, targetX, targetY, style = {} }) => {
   const [edgePath] = getBezierPath({
     sourceX,
