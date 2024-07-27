@@ -74,9 +74,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-@layer utilities {
-  .rotate-15 {
-    transform: rotate(15deg);
-  }
-}
