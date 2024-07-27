@@ -7,13 +7,13 @@ import ReactFlow, {
   useEdgesState,
   BaseEdge,
   EdgeLabelRenderer,
-  getSmoothStepPath,
+  getBezierPath,
   MarkerType,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
 const CustomEdge = ({ id, sourceX, sourceY, targetX, targetY, style = {} }) => {
-  const [edgePath, labelX, labelY] = getSmoothStepPath({
+  const [edgePath] = getBezierPath({
     sourceX,
     sourceY,
     targetX,
@@ -23,19 +23,6 @@ const CustomEdge = ({ id, sourceX, sourceY, targetX, targetY, style = {} }) => {
   return (
     <>
       <BaseEdge path={edgePath} style={style} />
-      <EdgeLabelRenderer>
-        <div
-          style={{
-            position: 'absolute',
-            transform: `translate(-50%, -50%) translate(${targetX}px,${targetY}px)`,
-            pointerEvents: 'all',
-          }}
-        >
-          <svg width="20" height="20" viewBox="0 0 20 20">
-            <circle cx="10" cy="10" r="5" fill="#ffffff" />
-          </svg>
-        </div>
-      </EdgeLabelRenderer>
     </>
   );
 };
@@ -90,10 +77,12 @@ const nodeColor = (node) => {
 
 const edgeOptions = {
   type: 'custom',
-  style: { stroke: '#ffffff', strokeWidth: 4 },
+  style: { stroke: '#ffffff', strokeWidth: 6 },
   markerEnd: {
     type: MarkerType.ArrowClosed,
     color: '#ffffff',
+    width: 30,
+    height: 30,
   },
 };
 
