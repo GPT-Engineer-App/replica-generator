@@ -12,6 +12,19 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
+const CustomNode = ({ data }) => {
+  return (
+    <div style={nodeStyle}>
+      {data.label}
+      <div style={{ height: '2px', background: 'white', marginTop: '5px' }}></div>
+    </div>
+  );
+};
+
+const nodeTypes = {
+  custom: CustomNode,
+};
+
 const CustomEdge = ({ id, sourceX, sourceY, targetX, targetY, style = {} }) => {
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
@@ -46,14 +59,14 @@ const CustomEdge = ({ id, sourceX, sourceY, targetX, targetY, style = {} }) => {
 };
 
 const initialNodes = [
-  { id: 'arrays', type: 'input', data: { label: 'Arrays & Hashing' }, position: { x: 250, y: 0 } },
-  { id: 'twoPointers', data: { label: 'Two Pointers' }, position: { x: 100, y: 100 } },
-  { id: 'stack', data: { label: 'Stack' }, position: { x: 400, y: 100 } },
-  { id: 'binarySearch', data: { label: 'Binary Search' }, position: { x: 0, y: 200 } },
-  { id: 'slidingWindow', data: { label: 'Sliding Window' }, position: { x: 200, y: 200 } },
-  { id: 'linkedList', data: { label: 'Linked List' }, position: { x: 400, y: 200 } },
-  { id: 'trees', data: { label: 'Trees' }, position: { x: 200, y: 300 } },
-  { id: 'tries', data: { label: 'Tries' }, position: { x: 0, y: 400 } },
+  { id: 'arrays', type: 'custom', data: { label: 'Arrays & Hashing' }, position: { x: 250, y: 0 } },
+  { id: 'twoPointers', type: 'custom', data: { label: 'Two Pointers' }, position: { x: 100, y: 100 } },
+  { id: 'stack', type: 'custom', data: { label: 'Stack' }, position: { x: 400, y: 100 } },
+  { id: 'binarySearch', type: 'custom', data: { label: 'Binary Search' }, position: { x: 0, y: 200 } },
+  { id: 'slidingWindow', type: 'custom', data: { label: 'Sliding Window' }, position: { x: 200, y: 200 } },
+  { id: 'linkedList', type: 'custom', data: { label: 'Linked List' }, position: { x: 400, y: 200 } },
+  { id: 'trees', type: 'custom', data: { label: 'Trees' }, position: { x: 200, y: 300 } },
+  { id: 'tries', type: 'custom', data: { label: 'Tries' }, position: { x: 0, y: 400 } },
   { id: 'heap', data: { label: 'Heap / Priority Queue' }, position: { x: 200, y: 400 } },
   { id: 'backtracking', data: { label: 'Backtracking' }, position: { x: 400, y: 400 } },
   { id: 'graphs', data: { label: 'Graphs' }, position: { x: 200, y: 500 } },
@@ -89,19 +102,26 @@ const initialEdges = [
   { id: 'e12-17', source: '1dDp', target: 'bitManipulation', type: 'custom', animated: true },
 ];
 
-const nodeColor = (node) => {
-  return '#4338ca';
+const nodeStyle = {
+  background: '#4338ca',
+  color: 'white',
+  border: 'none',
+  borderRadius: '8px',
+  padding: '10px',
+  fontSize: '14px',
+  fontWeight: 'bold',
+  width: 120,
+  textAlign: 'center',
 };
 
 const edgeOptions = {
-  type: 'custom',
-  style: { stroke: '#ffffff', strokeWidth: 10 },
+  type: 'smoothstep',
+  style: { stroke: '#ffffff', strokeWidth: 3 },
   markerEnd: {
     type: MarkerType.ArrowClosed,
     color: '#ffffff',
-    width: 40,
-    height: 40,
   },
+  animated: true,
 };
 
 const edgeTypes = {
@@ -121,14 +141,13 @@ const Roadmap = () => {
         onEdgesChange={onEdgesChange}
         nodesDraggable={false}
         nodesConnectable={false}
-        nodeColor={nodeColor}
         defaultViewport={{ x: 0, y: 0, zoom: 0.75 }}
         edgeOptions={edgeOptions}
-        edgeTypes={edgeTypes}
+        nodeTypes={nodeTypes}
+        fitView
       >
         <Background color="#333" gap={16} />
         <Controls />
-        <MiniMap />
       </ReactFlow>
       <div className="absolute top-4 right-4 bg-gray-800 text-white p-4 rounded-lg">
         <h2 className="text-xl font-bold mb-2">Select Roadmap</h2>
