@@ -44,7 +44,7 @@ const CustomEdge = ({ id, sourceX, sourceY, targetX, targetY, style = {} }) => {
         <marker
           id={`arrowhead-${id}`}
           viewBox="0 0 10 10"
-          refX="5"
+          refX="9"
           refY="5"
           markerWidth="8"
           markerHeight="8"
@@ -55,7 +55,7 @@ const CustomEdge = ({ id, sourceX, sourceY, targetX, targetY, style = {} }) => {
       </defs>
       <path
         id={id}
-        style={style}
+        style={{ ...style, strokeWidth: 3 }}
         className="react-flow__edge-path"
         d={edgePath}
         markerEnd={`url(#arrowhead-${id})`}
@@ -122,11 +122,7 @@ const nodeStyle = {
 
 const edgeOptions = {
   type: 'custom',
-  style: { stroke: '#ffffff', strokeWidth: 3 },
-  markerEnd: {
-    type: MarkerType.ArrowClosed,
-    color: '#ffffff',
-  },
+  style: { stroke: '#ffffff' },
   animated: true,
 };
 
