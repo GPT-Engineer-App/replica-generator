@@ -36,7 +36,6 @@ const initialEdges = [
   { id: 'e2-5', source: 'twoPointers', target: 'slidingWindow' },
   { id: 'e2-6', source: 'twoPointers', target: 'linkedList' },
   { id: 'e4-7', source: 'binarySearch', target: 'trees' },
-  { id: 'e5-7', source: 'slidingWindow', target: 'trees' },
   { id: 'e6-7', source: 'linkedList', target: 'trees' },
   { id: 'e7-8', source: 'trees', target: 'tries' },
   { id: 'e7-9', source: 'trees', target: 'heap' },
@@ -48,10 +47,9 @@ const initialEdges = [
   { id: 'e10-12', source: 'backtracking', target: '1dDp' },
   { id: 'e11-15', source: 'graphs', target: 'advancedGraphs' },
   { id: 'e11-16', source: 'graphs', target: '2dDp' },
+  { id: 'e11-18', source: 'graphs', target: 'math' },
   { id: 'e12-16', source: '1dDp', target: '2dDp' },
   { id: 'e12-17', source: '1dDp', target: 'bitManipulation' },
-  { id: 'e16-18', source: '2dDp', target: 'math' },
-  { id: 'e17-18', source: 'bitManipulation', target: 'math' },
 ];
 
 const nodeColor = (node) => {
