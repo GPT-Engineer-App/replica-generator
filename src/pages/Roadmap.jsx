@@ -15,18 +15,18 @@ const initialNodes = [
   { id: 'binarySearch', data: { label: 'Binary Search' }, position: { x: 0, y: 200 } },
   { id: 'slidingWindow', data: { label: 'Sliding Window' }, position: { x: 200, y: 200 } },
   { id: 'linkedList', data: { label: 'Linked List' }, position: { x: 400, y: 200 } },
-  { id: 'trees', data: { label: 'Trees' }, position: { x: 250, y: 300 } },
+  { id: 'trees', data: { label: 'Trees' }, position: { x: 200, y: 300 } },
   { id: 'tries', data: { label: 'Tries' }, position: { x: 0, y: 400 } },
   { id: 'heap', data: { label: 'Heap / Priority Queue' }, position: { x: 200, y: 400 } },
-  { id: 'backtracking', data: { label: 'Backtracking' }, position: { x: 500, y: 400 } },
-  { id: 'graphs', data: { label: 'Graphs' }, position: { x: 400, y: 500 } },
-  { id: '1dDp', data: { label: '1-D DP' }, position: { x: 600, y: 500 } },
+  { id: 'backtracking', data: { label: 'Backtracking' }, position: { x: 400, y: 400 } },
+  { id: 'graphs', data: { label: 'Graphs' }, position: { x: 200, y: 500 } },
+  { id: '1dDp', data: { label: '1-D DP' }, position: { x: 400, y: 500 } },
   { id: 'intervals', data: { label: 'Intervals' }, position: { x: 0, y: 600 } },
   { id: 'greedy', data: { label: 'Greedy' }, position: { x: 200, y: 600 } },
   { id: 'advancedGraphs', data: { label: 'Advanced Graphs' }, position: { x: 400, y: 600 } },
-  { id: '2dDp', data: { label: '2-D DP' }, position: { x: 600, y: 600 } },
-  { id: 'bitManipulation', data: { label: 'Bit Manipulation' }, position: { x: 800, y: 600 } },
-  { id: 'math', data: { label: 'Math & Geometry' }, position: { x: 500, y: 700 } },
+  { id: '2dDp', data: { label: '2-D DP' }, position: { x: 400, y: 700 } },
+  { id: 'bitManipulation', data: { label: 'Bit Manipulation' }, position: { x: 600, y: 700 } },
+  { id: 'math', data: { label: 'Math & Geometry' }, position: { x: 400, y: 800 } },
 ];
 
 const initialEdges = [
@@ -36,6 +36,7 @@ const initialEdges = [
   { id: 'e2-5', source: 'twoPointers', target: 'slidingWindow' },
   { id: 'e2-6', source: 'twoPointers', target: 'linkedList' },
   { id: 'e4-7', source: 'binarySearch', target: 'trees' },
+  { id: 'e5-7', source: 'slidingWindow', target: 'trees' },
   { id: 'e6-7', source: 'linkedList', target: 'trees' },
   { id: 'e7-8', source: 'trees', target: 'tries' },
   { id: 'e7-9', source: 'trees', target: 'heap' },
@@ -47,9 +48,10 @@ const initialEdges = [
   { id: 'e10-12', source: 'backtracking', target: '1dDp' },
   { id: 'e11-15', source: 'graphs', target: 'advancedGraphs' },
   { id: 'e11-16', source: 'graphs', target: '2dDp' },
-  { id: 'e11-18', source: 'graphs', target: 'math' },
   { id: 'e12-16', source: '1dDp', target: '2dDp' },
   { id: 'e12-17', source: '1dDp', target: 'bitManipulation' },
+  { id: 'e16-18', source: '2dDp', target: 'math' },
+  { id: 'e17-18', source: 'bitManipulation', target: 'math' },
 ];
 
 const nodeColor = (node) => {
