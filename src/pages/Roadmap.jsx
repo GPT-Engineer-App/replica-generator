@@ -25,8 +25,12 @@ const nodeTypes = {
   custom: CustomNode,
 };
 
+const edgeTypes = {
+  custom: CustomEdge,
+};
+
 const CustomEdge = ({ id, sourceX, sourceY, targetX, targetY, style = {} }) => {
-  const [edgePath, labelX, labelY] = getBezierPath({
+  const [edgePath] = getBezierPath({
     sourceX,
     sourceY,
     targetX,
@@ -36,24 +40,26 @@ const CustomEdge = ({ id, sourceX, sourceY, targetX, targetY, style = {} }) => {
 
   return (
     <>
+      <defs>
+        <marker
+          id={`arrowhead-${id}`}
+          viewBox="0 0 10 10"
+          refX="5"
+          refY="5"
+          markerWidth="8"
+          markerHeight="8"
+          orient="auto-start-reverse"
+        >
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#ffffff" />
+        </marker>
+      </defs>
       <path
         id={id}
         style={style}
         className="react-flow__edge-path"
         d={edgePath}
+        markerEnd={`url(#arrowhead-${id})`}
       />
-      <marker
-        id={`arrowhead-${id}`}
-        viewBox="0 0 20 20"
-        refX="10"
-        refY="10"
-        markerWidth="20"
-        markerHeight="20"
-        orient="auto-start-reverse"
-      >
-        <path d="M 0 0 L 20 10 L 0 20 z" fill="#ffffff" />
-      </marker>
-      <use href={`#${id}`} markerEnd={`url(#arrowhead-${id})`} />
     </>
   );
 };
@@ -115,7 +121,7 @@ const nodeStyle = {
 };
 
 const edgeOptions = {
-  type: 'smoothstep',
+  type: 'custom',
   style: { stroke: '#ffffff', strokeWidth: 3 },
   markerEnd: {
     type: MarkerType.ArrowClosed,
@@ -144,6 +150,7 @@ const Roadmap = () => {
         defaultViewport={{ x: 0, y: 0, zoom: 0.75 }}
         edgeOptions={edgeOptions}
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
         fitView
       >
         <Background color="#333" gap={16} />
