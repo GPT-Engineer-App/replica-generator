@@ -1,11 +1,10 @@
 import { NavItem } from "./NavItem";
 import { Button } from "@/components/ui/button";
-import { Rocket } from "lucide-react";
 
 export const DesktopNavbar = ({ navItems }) => (
   <nav className="flex items-center gap-6">
     <NavItem to="/" className="flex items-center gap-2 text-lg font-semibold">
-      <Rocket className="h-8 w-8" />
+      <img src="/neetcode-logo.png" alt="NeetCode Logo" className="h-8 w-8" />
       <span className="sr-only md:not-sr-only">NeetCode</span>
     </NavItem>
     {navItems.slice(0, 3).map((item) => (

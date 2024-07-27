@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Rocket } from "lucide-react";
+import { Menu } from "lucide-react";
 import { NavItem } from "./NavItem";
 
 export const MobileSheet = ({ navItems }) => (
@@ -17,7 +17,7 @@ export const MobileSheet = ({ navItems }) => (
           to="/"
           className="flex items-center gap-2 text-lg font-semibold"
         >
-          <Rocket className="h-6 w-6" />
+          <img src="/neetcode-logo.png" alt="NeetCode Logo" className="h-6 w-6" />
           <span>NeetCode</span>
         </NavItem>
         {navItems.map((item) => (
