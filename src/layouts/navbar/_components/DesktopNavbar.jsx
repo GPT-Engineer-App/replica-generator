@@ -3,8 +3,12 @@ import { Button } from "@/components/ui/button";
 
 export const DesktopNavbar = ({ navItems }) => (
   <nav className="flex items-center gap-6">
-    <NavItem to="/" className="flex items-center gap-2 text-lg font-semibold">
-      <img src="https://neetcode.io/assets/neetcode-io-logo.png" alt="NeetCode Logo" className="h-8 w-8" />
+    <NavItem to="/" className="flex items-center gap-2 text-lg font-semibold group">
+      <img 
+        src="https://neetcode.io/assets/neetcode-io-logo.png" 
+        alt="NeetCode Logo" 
+        className="h-8 w-8 transition-transform duration-300 group-hover:rotate-15"
+      />
       <span className="sr-only md:not-sr-only">NeetCode</span>
     </NavItem>
     {navItems.slice(0, 3).map((item) => (
