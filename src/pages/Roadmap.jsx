@@ -21,6 +21,12 @@ const CustomNode = ({ data }) => {
   );
 };
 
+const CustomEdge = ({ id, sourceX, sourceY, targetX, targetY, style = {} }) => {
+  const [edgePath] = getBezierPath({
+    sourceX,
+    sourceY,
+    targetX,
+
 const nodeTypes = {
   custom: CustomNode,
 };
@@ -28,12 +34,6 @@ const nodeTypes = {
 const edgeTypes = {
   custom: CustomEdge,
 };
-
-const CustomEdge = ({ id, sourceX, sourceY, targetX, targetY, style = {} }) => {
-  const [edgePath] = getBezierPath({
-    sourceX,
-    sourceY,
-    targetX,
     targetY,
     curvature: 0.2,
   });
