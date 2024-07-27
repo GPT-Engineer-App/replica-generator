@@ -5,8 +5,8 @@ import ReactFlow, {
   MiniMap,
   useNodesState,
   useEdgesState,
-} from 'reactflow';
-import 'reactflow/dist/style.css';
+} from 'react-flow-renderer';
+import 'react-flow-renderer/dist/style.css';
 
 const initialNodes = [
   { id: 'arrays', type: 'input', data: { label: 'Arrays & Hashing' }, position: { x: 250, y: 0 } },
