@@ -13,16 +13,34 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 
 const CustomEdge = ({ id, sourceX, sourceY, targetX, targetY, style = {} }) => {
-  const [edgePath] = getBezierPath({
+  const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
     targetX,
     targetY,
+    curvature: 0.2,
   });
 
   return (
     <>
-      <BaseEdge path={edgePath} style={style} />
+      <path
+        id={id}
+        style={style}
+        className="react-flow__edge-path"
+        d={edgePath}
+      />
+      <marker
+        id={`arrowhead-${id}`}
+        viewBox="0 0 20 20"
+        refX="10"
+        refY="10"
+        markerWidth="20"
+        markerHeight="20"
+        orient="auto-start-reverse"
+      >
+        <path d="M 0 0 L 20 10 L 0 20 z" fill="#ffffff" />
+      </marker>
+      <use href={`#${id}`} markerEnd={`url(#arrowhead-${id})`} />
     </>
   );
 };
@@ -49,26 +67,26 @@ const initialNodes = [
 ];
 
 const initialEdges = [
-  { id: 'e1-2', source: 'arrays', target: 'twoPointers', type: 'custom' },
-  { id: 'e1-3', source: 'arrays', target: 'stack', type: 'custom' },
-  { id: 'e2-4', source: 'twoPointers', target: 'binarySearch', type: 'custom' },
-  { id: 'e2-5', source: 'twoPointers', target: 'slidingWindow', type: 'custom' },
-  { id: 'e2-6', source: 'twoPointers', target: 'linkedList', type: 'custom' },
-  { id: 'e4-7', source: 'binarySearch', target: 'trees', type: 'custom' },
-  { id: 'e6-7', source: 'linkedList', target: 'trees', type: 'custom' },
-  { id: 'e7-8', source: 'trees', target: 'tries', type: 'custom' },
-  { id: 'e7-9', source: 'trees', target: 'heap', type: 'custom' },
-  { id: 'e7-10', source: 'trees', target: 'backtracking', type: 'custom' },
-  { id: 'e9-13', source: 'heap', target: 'intervals', type: 'custom' },
-  { id: 'e9-14', source: 'heap', target: 'greedy', type: 'custom' },
-  { id: 'e9-15', source: 'heap', target: 'advancedGraphs', type: 'custom' },
-  { id: 'e10-11', source: 'backtracking', target: 'graphs', type: 'custom' },
-  { id: 'e10-12', source: 'backtracking', target: '1dDp', type: 'custom' },
-  { id: 'e11-15', source: 'graphs', target: 'advancedGraphs', type: 'custom' },
-  { id: 'e11-16', source: 'graphs', target: '2dDp', type: 'custom' },
-  { id: 'e11-18', source: 'graphs', target: 'math', type: 'custom' },
-  { id: 'e12-16', source: '1dDp', target: '2dDp', type: 'custom' },
-  { id: 'e12-17', source: '1dDp', target: 'bitManipulation', type: 'custom' },
+  { id: 'e1-2', source: 'arrays', target: 'twoPointers', type: 'custom', animated: true },
+  { id: 'e1-3', source: 'arrays', target: 'stack', type: 'custom', animated: true },
+  { id: 'e2-4', source: 'twoPointers', target: 'binarySearch', type: 'custom', animated: true },
+  { id: 'e2-5', source: 'twoPointers', target: 'slidingWindow', type: 'custom', animated: true },
+  { id: 'e2-6', source: 'twoPointers', target: 'linkedList', type: 'custom', animated: true },
+  { id: 'e4-7', source: 'binarySearch', target: 'trees', type: 'custom', animated: true },
+  { id: 'e6-7', source: 'linkedList', target: 'trees', type: 'custom', animated: true },
+  { id: 'e7-8', source: 'trees', target: 'tries', type: 'custom', animated: true },
+  { id: 'e7-9', source: 'trees', target: 'heap', type: 'custom', animated: true },
+  { id: 'e7-10', source: 'trees', target: 'backtracking', type: 'custom', animated: true },
+  { id: 'e9-13', source: 'heap', target: 'intervals', type: 'custom', animated: true },
+  { id: 'e9-14', source: 'heap', target: 'greedy', type: 'custom', animated: true },
+  { id: 'e9-15', source: 'heap', target: 'advancedGraphs', type: 'custom', animated: true },
+  { id: 'e10-11', source: 'backtracking', target: 'graphs', type: 'custom', animated: true },
+  { id: 'e10-12', source: 'backtracking', target: '1dDp', type: 'custom', animated: true },
+  { id: 'e11-15', source: 'graphs', target: 'advancedGraphs', type: 'custom', animated: true },
+  { id: 'e11-16', source: 'graphs', target: '2dDp', type: 'custom', animated: true },
+  { id: 'e11-18', source: 'graphs', target: 'math', type: 'custom', animated: true },
+  { id: 'e12-16', source: '1dDp', target: '2dDp', type: 'custom', animated: true },
+  { id: 'e12-17', source: '1dDp', target: 'bitManipulation', type: 'custom', animated: true },
 ];
 
 const nodeColor = (node) => {
@@ -77,12 +95,12 @@ const nodeColor = (node) => {
 
 const edgeOptions = {
   type: 'custom',
-  style: { stroke: '#ffffff', strokeWidth: 6 },
+  style: { stroke: '#ffffff', strokeWidth: 10 },
   markerEnd: {
     type: MarkerType.ArrowClosed,
     color: '#ffffff',
-    width: 30,
-    height: 30,
+    width: 40,
+    height: 40,
   },
 };
 
