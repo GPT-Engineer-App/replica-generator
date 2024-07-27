@@ -15,12 +15,12 @@ export const MobileSheet = ({ navItems }) => (
       <nav className="grid gap-6 text-lg font-medium">
         <NavItem
           to="/"
-          className="flex items-center gap-2 text-lg font-semibold group"
+          className="flex items-center gap-2 text-lg font-semibold"
         >
           <img 
             src="https://neetcode.io/assets/neetcode-io-logo.png" 
             alt="NeetCode Logo" 
-            className="h-6 w-6 transition-transform duration-300 group-hover:rotate-15"
+            className="h-6 w-6"
           />
           <span>NeetCode</span>
         </NavItem>
